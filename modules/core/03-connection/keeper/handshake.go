@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"bytes"
+	"fmt"
 
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -164,6 +165,7 @@ func (k Keeper) ConnOpenTry(
 	}
 
 	// Check that ChainA stored the clientState provided in the msg
+	fmt.Println("ConnOpenTry VerifyClientState")
 	if err := k.VerifyClientState(ctx, connection, proofHeight, proofClient, clientState); err != nil {
 		return "", err
 	}
@@ -272,6 +274,7 @@ func (k Keeper) ConnOpenAck(
 	}
 
 	// Check that ChainB stored the clientState provided in the msg
+	fmt.Println("ConnOpenAck VerifyClientState")
 	if err := k.VerifyClientState(ctx, connection, proofHeight, proofClient, clientState); err != nil {
 		return err
 	}

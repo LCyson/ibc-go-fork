@@ -1,6 +1,7 @@
 package types
 
 import (
+	fmt "fmt"
 	"strings"
 	"time"
 
@@ -201,6 +202,7 @@ func (cs ClientState) VerifyClientState(
 	proof []byte,
 	clientState exported.ClientState,
 ) error {
+	fmt.Println("In VerifyClientState ", height, prefix, counterpartyClientIdentifier, string(proof))
 	merkleProof, provingConsensusState, err := produceVerificationArgs(store, cdc, cs, height, prefix, proof)
 	if err != nil {
 		return err
@@ -220,6 +222,7 @@ func (cs ClientState) VerifyClientState(
 	if !ok {
 		return sdkerrors.Wrapf(clienttypes.ErrInvalidClient, "invalid client type %T, expected %T", clientState, &ClientState{})
 	}
+	fmt.Println("ClientState ", clientState)
 
 	bz, err := cdc.MarshalInterface(clientState)
 	if err != nil {
