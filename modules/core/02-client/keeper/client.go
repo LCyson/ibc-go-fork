@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"encoding/hex"
+	"fmt"
 
 	"github.com/armon/go-metrics"
 	"github.com/cosmos/cosmos-sdk/telemetry"
@@ -76,6 +77,8 @@ func (k Keeper) UpdateClient(ctx sdk.Context, clientID string, header exported.H
 		return sdkerrors.Wrapf(err, "cannot update client with ID %s", clientID)
 	}
 
+	fmt.Println("updating client, state is ", newConsensusState)
+
 	// emit the full header in events
 	var (
 		headerStr       string
@@ -90,6 +93,8 @@ func (k Keeper) UpdateClient(ctx sdk.Context, clientID string, header exported.H
 		consensusHeight = header.GetHeight()
 
 	}
+	fmt.Println("updating client, consensusHeight is ", consensusHeight)
+	fmt.Println("updating client, headerStr is ", headerStr)
 
 	// set new client state regardless of if update is valid update or misbehaviour
 	k.SetClientState(ctx, clientID, newClientState)

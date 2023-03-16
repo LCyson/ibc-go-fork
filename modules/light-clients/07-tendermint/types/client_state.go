@@ -224,6 +224,14 @@ func (cs ClientState) VerifyClientState(
 	}
 	fmt.Println("ClientState ", clientState)
 
+	ClientState  chain_id:"sei-chain" trust_level:<numerator:1 denominator:3 > trusting_period:<seconds:172800 >
+	 unbonding_period:<seconds:1814400 > max_clock_drift:<seconds:40 > frozen_height:<> latest_height:<revision_height:2320 > 
+	 proof_specs:<leaf_spec:<hash:SHA256 prehash_value:SHA256 length:VAR_PROTO prefix:"\000" > 
+	 inner_spec:<child_order:0 child_order:1 child_size:33 min_prefix_length:4 max_prefix_length:12 hash:SHA256 > > 
+	 proof_specs:<leaf_spec:<hash:SHA256 prehash_value:SHA256 length:VAR_PROTO prefix:"\000" > 
+	 inner_spec:<child_order:0 child_order:1 child_size:32 min_prefix_length:1 max_prefix_length:1 hash:SHA256 > >
+	  upgrade_path:"upgrade" upgrade_path:"upgradedIBCState" allow_update_after_expiry:true allow_update_after_misbehaviour:true
+
 	bz, err := cdc.MarshalInterface(clientState)
 	if err != nil {
 		return err
