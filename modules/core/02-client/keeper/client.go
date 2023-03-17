@@ -94,7 +94,6 @@ func (k Keeper) UpdateClient(ctx sdk.Context, clientID string, header exported.H
 
 	}
 	fmt.Println("updating client, consensusHeight is ", consensusHeight)
-	fmt.Println("updating client, headerStr is ", headerStr)
 
 	// set new client state regardless of if update is valid update or misbehaviour
 	k.SetClientState(ctx, clientID, newClientState)
