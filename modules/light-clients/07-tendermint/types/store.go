@@ -76,7 +76,8 @@ func GetConsensusState(store sdk.KVStore, cdc codec.BinaryCodec, height exported
 	}
 
 	fmt.Println("getting consensus state for height ", height)
-	fmt.Println("consensusState: ", consensusState)
+	fmt.Println("consensusState root: %x", consensusState.Root)
+	fmt.Println("consensusState next val hash: %x", consensusState.NextValidatorsHash)
 
 	return consensusState, nil
 }
