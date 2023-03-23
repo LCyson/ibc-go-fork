@@ -3,6 +3,7 @@ package types
 import (
 	"bytes"
 	"encoding/binary"
+	fmt "fmt"
 	"strings"
 
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -73,6 +74,9 @@ func GetConsensusState(store sdk.KVStore, cdc codec.BinaryCodec, height exported
 			"invalid consensus type %T, expected %T", consensusState, &ConsensusState{},
 		)
 	}
+
+	fmt.Println("getting consensus state for height ", height)
+	fmt.Println("consensusState: ", consensusState)
 
 	return consensusState, nil
 }
