@@ -60,7 +60,7 @@ func (cs ClientState) CheckHeaderAndUpdateState(
 			clienttypes.ErrInvalidHeader, "expected type %T, got %T", &Header{}, header,
 		)
 	}
-	fmt.Println("consensusState in CheckHeaderAndUpdateState\n", tmHeader.ConsensusState())
+	fmt.Printf("app hash in is CheckHeaderAndUpdateState %x\n", tmHeader.Header.GetAppHash())
 
 	// Check if the Client store already has a consensus state for the header's height
 	// If the consensus state exists, and it matches the header then we return early
